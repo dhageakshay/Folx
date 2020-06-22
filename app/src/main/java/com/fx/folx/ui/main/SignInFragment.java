@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.fx.folx.MainActivity;
 import com.fx.folx.R;
 import com.fx.folx.SignIn;
+import com.fx.folx.SwipeActivity;
 
 /**
  *Sign in Fragment
@@ -40,7 +41,7 @@ public class SignInFragment extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                startActivity(new Intent(getActivity(), SwipeActivity.class));
             }
         });
 

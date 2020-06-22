@@ -22,7 +22,7 @@ public class PictureEntryActivity extends AppCompatActivity {
         imgContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PictureEntryActivity.this, MainActivity.class));
+                startActivity(new Intent(PictureEntryActivity.this, SwipeActivity.class));
             }
         });
     }
