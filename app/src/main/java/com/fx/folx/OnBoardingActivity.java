@@ -17,7 +17,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_on_boarding);
 
         TextView welcome = findViewById(R.id.welcome);
-        welcome.setTypeface(Typeface.createFromAsset(getAssets(),"Monstserrat-Medium.ttf"));
+        welcome.setTypeface(Typeface.createFromAsset(getAssets(),"Montserrat-Medium.ttf"));
 
         Button signUp = findViewById(R.id.signup);
         Button signIn = findViewById(R.id.signin);
@@ -29,11 +29,11 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
         });
 
-       /* signIn.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent());
+                startActivity(new Intent(OnBoardingActivity.this,SignIn.class));
             }
-        });*/
+        });
     }
 }

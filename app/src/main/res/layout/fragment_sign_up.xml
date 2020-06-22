@@ -7,18 +7,103 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.main.SignUpFragment">
 
-	<TextView
-		android:id="@+id/section_label"
-		android:layout_width="wrap_content"
+
+	<EditText
+		android:id="@+id/signUpName"
+		android:layout_width="260dp"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="@dimen/activity_horizontal_margin"
-		android:layout_marginTop="@dimen/activity_vertical_margin"
-		android:layout_marginEnd="@dimen/activity_horizontal_margin"
-		android:text="Sign Up"
-		android:layout_marginBottom="@dimen/activity_vertical_margin"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-		tools:layout_constraintLeft_creator="1"
-		tools:layout_constraintTop_creator="1" />
+		android:hint="First Name"
+		android:inputType="text"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.496"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.123" />
+
+	<EditText
+		android:id="@+id/signUpEmail"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:hint="Email Address"
+		android:inputType="textEmailAddress"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/signUpName"
+		app:layout_constraintVertical_bias="0.055" />
+
+	<EditText
+		android:id="@+id/signUpPassword"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:hint="Password"
+		android:inputType="textPassword"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.503"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/signUpEmail"
+		app:layout_constraintVertical_bias="0.062" />
+
+	<EditText
+		android:id="@+id/confirmPassword"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:hint="Confirm Password"
+		android:inputType="textPassword"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.503"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/signUpPassword"
+		app:layout_constraintVertical_bias="0.076" />
+
+	<EditText
+		android:id="@+id/signUpPhone"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:hint="Phone"
+		android:inputType="phone"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.503"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
+		app:layout_constraintVertical_bias="0.1" />
+
+
+	<EditText
+		android:id="@+id/signUpdob"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:hint="DOB"
+		android:inputType="date"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.503"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/signUpPhone"
+		app:layout_constraintVertical_bias="0.142" />
+
+	<Button
+		android:id="@+id/signUpContinue"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/rounded_rectangle"
+		android:text="Continue"
+		android:textColor="@color/white"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.498"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/signUpdob"
+		app:layout_constraintVertical_bias="0.3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

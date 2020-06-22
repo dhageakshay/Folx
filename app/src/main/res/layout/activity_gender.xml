@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".GenderActivity">
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Gender"
+		android:textColor="@color/matteBlack"
+		android:textSize="30sp"
+		app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.407"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.637" />
+
+	<RadioGroup
+		android:id="@+id/radioGroup"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.455"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.225">
+
+		<RadioButton
+			android:id="@+id/male"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Male"
+			android:textColor="@color/matteBlack"
+			android:textSize="24sp" />
+
+		<RadioButton
+			android:id="@+id/female"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Female"
+			android:textColor="@color/matteBlack"
+			android:textSize="24sp" />
+
+		<RadioButton
+			android:id="@+id/genderX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Gender X"
+			android:textColor="@color/matteBlack"
+			android:textSize="24sp" />
+	</RadioGroup>
+
+	<Button
+		android:id="@+id/genderContinue"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/rounded_rectangle"
+		android:text="Continue"
+		android:textColor="@color/white"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+		app:layout_constraintVertical_bias="0.817" />
+</androidx.constraintlayout.widget.ConstraintLayout>
