@@ -19,6 +19,13 @@
 			android:id="@+id/action_HomeFragment_to_Messages"
 			app:destination="@id/nav_messages" />
 
+		<action
+			android:id="@+id/action_HomeFragment_to_Story"
+			app:destination="@id/nav_stories"/>
+
+
+
+
 	</fragment>
 
 	<fragment
@@ -28,8 +35,20 @@
 		tools:layout="@layout/fragment_profile" />
 
 	<fragment
-		android:id="@+id/nav_messages"
+		android:id="@+id/nav_settings"
 		android:name="com.fx.folx.ui.slideshow.SlideshowFragment"
 		android:label="@string/menu_settings"
 		tools:layout="@layout/fragment_slideshow" />
+
+	<activity
+		android:id="@+id/nav_stories"
+		android:name="com.fx.folx.StoryActivity"
+		android:label="@string/menu_your_story"
+		tools:layout="@layout/activity_story"/>
+
+	<activity
+		android:id="@+id/nav_messages"
+		android:name="com.fx.folx.ChatActivity"
+		android:label="@string/menu_messages"
+		tools:layout="@layout/activity_chat"/>
 </navigation>

@@ -12,9 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.fx.folx.MainActivity;
 import com.fx.folx.R;
-import com.fx.folx.SignIn;
 import com.fx.folx.SwipeActivity;
 
 /**

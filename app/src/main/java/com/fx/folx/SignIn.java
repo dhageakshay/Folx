@@ -24,6 +24,14 @@ public class SignIn extends AppCompatActivity {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+        int position = 0;
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            position = extras.getInt("viewpager_pos");
+        }
+
+        viewPager.setCurrentItem(position);
+
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
