@@ -70,7 +70,11 @@ public class HomeFragment extends Fragment {
         SwipeableTouchHelperCallback swipeableTouchHelperCallback = new SwipeableTouchHelperCallback(new OnItemSwiped() {
             @Override
             public void onItemSwiped() {
-                adapter.removeTopItem();
+                if(ItemTouchHelper.UP == 1 | ItemTouchHelper.DOWN == 1<<1){     // ItemTouchHelper.UP and ItemTouchHelper.Down are initialized to respective value in com.fx.folx.layoutmanager.touchelper.ItemTouchHelper
+                    adapter.removeTopItem();
+                }
+
+                //TODO: On swiping left the card gets removed from the feed. It should not be removed from the user's feed.
             }
 
             @Override
@@ -89,11 +93,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSwipedUp() {
                 Log.e("SWIPE", "UP");
+
             }
 
             @Override
             public void onItemSwipedDown() {
                 Log.e("SWIPE", "DOWN");
+
 
             }
         }){
@@ -101,6 +107,8 @@ public class HomeFragment extends Fragment {
             public int getAllowedSwipeDirectionsMovementFlags(RecyclerView.ViewHolder viewHolder) {
                 return ItemTouchHelper.LEFT | ItemTouchHelper.UP | ItemTouchHelper.DOWN;
             }
+
+
         };
 
 

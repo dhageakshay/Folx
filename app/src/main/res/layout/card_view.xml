@@ -1,7 +1,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:map="http://schemas.android.com/tools"
-
-	android:id="@+id/restaurantContainer"
+	android:id="@+id/cardContainer"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:layout_margin="16dp">
@@ -14,7 +13,7 @@
 		>
 
 		<ImageView
-			android:id="@+id/image"
+			android:id="@+id/feedimage"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:src="@drawable/girl1"
@@ -28,17 +27,18 @@
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_alignBottom="@id/image"
+			android:layout_alignBottom="@id/feedimage"
 			android:layout_centerHorizontal="true"
 			android:alpha="0.8"
 			android:paddingRight="80dp"
 			android:paddingLeft="80dp"
 			android:paddingBottom="24dp"
 			android:paddingTop="24dp"
+			android:background="@drawable/rect_grey"
 			android:orientation="vertical">
 
 			<TextView
-				android:id="@+id/name"
+				android:id="@+id/feedName"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="5dp"
@@ -47,7 +47,7 @@
 				android:textAppearance="?android:attr/textAppearanceLarge" />
 
 			<TextView
-				android:id="@+id/age"
+				android:id="@+id/feedAge"
 				android:layout_width="fill_parent"
 				android:layout_height="fill_parent"
 				android:layout_margin="5dp"

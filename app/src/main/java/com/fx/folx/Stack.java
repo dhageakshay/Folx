@@ -12,8 +12,8 @@ public class Stack extends RecyclerView.ViewHolder {
 
     public Stack(@NonNull View itemView) {
         super(itemView);
-        nameView = itemView.findViewById(R.id.name);
-        ageView = itemView.findViewById(R.id.age);
+        nameView = itemView.findViewById(R.id.feedName);
+        ageView = itemView.findViewById(R.id.feedAge);
     }
 
 
