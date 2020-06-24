@@ -24,7 +24,7 @@ public class GenderActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rb = (RadioButton) group.findViewById(checkedId);
+                RadioButton rb = group.findViewById(checkedId);
 
             }
         });

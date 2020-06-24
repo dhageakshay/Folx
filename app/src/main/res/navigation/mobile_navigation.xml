@@ -23,22 +23,26 @@
 			android:id="@+id/action_HomeFragment_to_Story"
 			app:destination="@id/nav_stories"/>
 
+		<action
+			android:id="@+id/action_HomeFragment_to_Settings"
+			app:destination="@id/nav_settings"/>
+
 
 
 
 	</fragment>
 
-	<fragment
+	<activity
 		android:id="@+id/nav_profile"
-		android:name="com.fx.folx.ui.profile.ProfileFragment"
-		android:label="Gallery"
-		tools:layout="@layout/fragment_profile" />
+		android:name="com.fx.folx.ProfileActivity"
+		android:label="@string/menu_profile"
+		tools:layout="@layout/activity_profile" />
 
-	<fragment
+	<activity
 		android:id="@+id/nav_settings"
-		android:name="com.fx.folx.ui.slideshow.SlideshowFragment"
+		android:name="com.fx.folx.SettingsActivity"
 		android:label="@string/menu_settings"
-		tools:layout="@layout/fragment_slideshow" />
+		tools:layout="@layout/activity_settings" />
 
 	<activity
 		android:id="@+id/nav_stories"

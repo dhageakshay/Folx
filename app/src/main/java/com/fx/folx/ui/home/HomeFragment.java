@@ -1,5 +1,6 @@
 package com.fx.folx.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fx.folx.BioActivity;
 import com.fx.folx.R;
 import com.fx.folx.StackAdapter;
 import com.fx.folx.User;
@@ -27,7 +29,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+//    private HomeViewModel homeViewModel;
 
     RecyclerView recyclerView;
 
@@ -37,8 +39,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+//        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
@@ -46,6 +47,10 @@ public class HomeFragment extends Fragment {
         User u2 = new User("Anna", 28);
         User u3 = new User("Mary",29);
         User u4 = new User("Juliet", 26);
+        User u5 = new User("Jane Doe", 24);
+        User u6 = new User("Anna", 28);
+        User u7 = new User("Mary",29);
+        User u8 = new User("Juliet", 26);
 
         users = new ArrayList<>();
 
@@ -53,6 +58,10 @@ public class HomeFragment extends Fragment {
         users.add(u2);
         users.add(u3);
         users.add(u4);
+        users.add(u5);
+        users.add(u6);
+        users.add(u7);
+        users.add(u8);
 
         recyclerView = root.findViewById(R.id.recylcer_view);
 
@@ -67,7 +76,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSwipedLeft() {
                 Log.e("SWIPE", "LEFT");
-                //TODO: Render another card for the bio and make disable all swipes except swipe right to go back to the stack
+                //Intent to go to the bio
+                Intent i = new Intent(getActivity(), BioActivity.class);
+                startActivity(i);
             }
 
             @Override
@@ -88,7 +99,7 @@ public class HomeFragment extends Fragment {
         }){
             @Override
             public int getAllowedSwipeDirectionsMovementFlags(RecyclerView.ViewHolder viewHolder) {
-                return ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT | ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+                return ItemTouchHelper.LEFT | ItemTouchHelper.UP | ItemTouchHelper.DOWN;
             }
         };
 
