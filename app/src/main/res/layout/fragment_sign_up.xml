@@ -22,6 +22,19 @@
 		app:layout_constraintVertical_bias="0.123" />
 
 	<EditText
+		android:id="@+id/signUpNickName"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:hint="NickName (Optional)"
+		android:inputType="text"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.496"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.797" />
+
+	<EditText
 		android:id="@+id/signUpEmail"
 		android:layout_width="260dp"
 		android:layout_height="wrap_content"
@@ -100,10 +113,10 @@
 		android:textColor="@color/white"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.498"
+		app:layout_constraintHorizontal_bias="0.503"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/signUpdob"
-		app:layout_constraintVertical_bias="0.3" />
+		app:layout_constraintVertical_bias="0.69" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

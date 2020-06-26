@@ -11,14 +11,14 @@
 		android:id="@+id/welcome"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="@string/welcome"
+		android:text="@string/hello"
 		android:textColor="@color/black"
 		android:textSize="24sp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="0.258"
+		app:layout_constraintVertical_bias="0.304"
 		tools:ignore="MissingConstraints" />
 
 	<androidx.appcompat.widget.AppCompatImageView
@@ -31,8 +31,8 @@
 		app:layout_constraintHorizontal_bias="0.496"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		android:scaleX="0.5"
-		android:scaleY="0.5"
+		android:scaleX="0.6"
+		android:scaleY="0.6"
 		app:layout_constraintVertical_bias="0.403"
 		tools:ignore="MissingConstraints" />
 

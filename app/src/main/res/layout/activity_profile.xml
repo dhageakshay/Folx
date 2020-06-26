@@ -29,16 +29,41 @@
 				android:padding="8dp"
 				app:srcCompat="@drawable/ic_person_black_24dp" />
 
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:layout_gravity="center_horizontal">
+
+				<TextView
+					android:id="@+id/profileName"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:padding="8dp"
+					android:text="UserName,"
+					android:textColor="@color/matteBlack"
+					android:textSize="24sp" />
+
+				<TextView
+					android:id="@+id/profileAge"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:padding="8dp"
+					android:text="21"
+					android:textColor="@color/colorAccentLight"
+					android:textSize="24sp" />
+
+			</LinearLayout>
+
 			<TextView
-				android:id="@+id/profileName"
+				android:id="@+id/profileStatus"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal"
-				android:layout_marginBottom="16dp"
-				android:layout_marginTop="16dp"
-				android:padding="8dp"
-				android:text="UserName"
-				android:textColor="@color/matteBlack"
+				android:text="Quote"
+				android:textColor="@color/colorAccentLight"
 				android:textSize="24sp" />
 
 			<TextView

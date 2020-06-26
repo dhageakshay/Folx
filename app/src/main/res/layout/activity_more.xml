@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MoreActivity">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_marginBottom="32dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="You are an"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:layout_marginStart="16dp">
+
+				<RadioButton
+					android:id="@+id/introvertRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Introvert"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/extrovertRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Extrovert"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Are you a travel buff?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:layout_marginStart="16dp">
+
+				<RadioButton
+					android:id="@+id/travelYesRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Yes"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/travelNoRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="No"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What book inspires you?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/bookNameEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your favorite character?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/characterEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your deepest fantasy?"
+				android:layout_marginTop="16dp"
+				android:layout_marginStart="32dp"
+				android:layout_marginLeft="32dp"/>
+
+			<EditText
+				android:id="@+id/fantasyEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"/>
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Do you drink?"
+				android:layout_marginTop="16dp"
+				android:layout_marginStart="32dp"
+				android:layout_marginLeft="32dp"/>
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginBottom="8dp">
+
+				<RadioButton
+					android:id="@+id/drinkNeverRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Never"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/drinkSocialRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Socially"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/drinkRegularRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Regular"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Do you smoke?"
+				android:layout_marginTop="16dp"
+				android:layout_marginStart="32dp"
+				android:layout_marginLeft="32dp"/>
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:layout_marginLeft="16dp">
+
+				<RadioButton
+					android:id="@+id/smokeNeverRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Never"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/smokeSocialRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Socially"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/smokeRegularRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Regularly"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your favorite topic of interest?"
+				android:layout_marginTop="16dp"
+				android:layout_marginStart="32dp"
+				android:layout_marginLeft="32dp"/>
+
+			<EditText
+				android:id="@+id/topicInterestEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What would you grab first if your house was on fire?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/fireEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="If your stuck in an elevator and forced to listen to only one song, what would it be?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/songEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="If you could change your name, what would it be?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/changedNameEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="How long do you think will you survive if a zombie apocalypse happens?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/zombieEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What are you addicted to?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/addictEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Are you a pet lover?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/petEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What do you prefer?"
+				android:layout_marginTop="16dp"
+				android:layout_marginStart="32dp"
+				android:layout_marginLeft="32dp"/>
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:layout_marginLeft="16dp">
+
+				<RadioButton
+					android:id="@+id/mountainRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Mountains"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/beachRadio"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Beaches"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your favorite sports"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/sportEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Which movie can you watch over and over again and still not get bored of?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/moiveEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your ideal Saturday night be like?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/saturdayEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Do you sing while you are in shower?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+
+			<RadioGroup
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:layout_marginLeft="16dp">
+
+				<RadioButton
+					android:id="@+id/showerYes"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Yes"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+				<RadioButton
+					android:id="@+id/showerNo"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="No"
+					android:textSize="24sp"
+					android:textColor="@color/matteBlack"/>
+
+			</RadioGroup>
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Which celebrity would you like spend an entire day with?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/celebEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your favorite TV series?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/tvEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Do you have any tattoos?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/tattooEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your favorite place that you always wanna vist?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/favPlaceEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="What's your guilty pleasure?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/guiltyPleasureEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/matteBlack"
+				android:textSize="24sp"
+				android:text="Do you have any secret talents?"
+				android:layout_marginTop="16dp"
+				android:layout_marginLeft="32dp"
+				android:layout_marginStart="32dp" />
+
+			<EditText
+				android:id="@+id/secretEdit"
+				android:layout_width="240dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="8dp"
+				android:hint="Your Answer"
+				android:inputType="textCapSentences"
+				android:layout_marginStart="16dp" />
+
+
+		</LinearLayout>
+	</ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
