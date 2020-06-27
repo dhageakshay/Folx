@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.fx.folx.R;
 import com.fx.folx.SwipeActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  *Sign in Fragment
@@ -23,6 +25,7 @@ public class SignInFragment extends Fragment {
     private EditText signInEmail, signInPassword;
     private Button signIn;
     private TextView forgotPass;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(
@@ -36,6 +39,8 @@ public class SignInFragment extends Fragment {
         signIn = root.findViewById(R.id.signInButton);
         forgotPass = root.findViewById(R.id.forgotPassword);
 
+        mAuth = FirebaseAuth.getInstance();
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,5 +51,13 @@ public class SignInFragment extends Fragment {
 
 
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(currentUser);
     }
 }

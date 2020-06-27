@@ -75,6 +75,8 @@ public class HomeFragment extends Fragment {
                 }
 
                 //TODO: On swiping left the card gets removed from the feed. It should not be removed from the user's feed.
+
+                //TODO: If sexual orientation is null show all kinds of people to the user
             }
 
             @Override

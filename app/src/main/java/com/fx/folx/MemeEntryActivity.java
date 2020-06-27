@@ -15,7 +15,7 @@ public class MemeEntryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_picture_entry);
+        setContentView(R.layout.activity_meme_entry);
 
         Button imgContinue = findViewById(R.id.memeContinue);
 

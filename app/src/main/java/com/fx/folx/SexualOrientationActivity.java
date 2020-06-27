@@ -13,12 +13,14 @@ import java.util.List;
 
 public class SexualOrientationActivity extends AppCompatActivity {
 
-    private List<String> sexualOrientation;
+    private ArrayList sexualOrientation;
+    private User u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sexual_orientation);
+        u= (User) getIntent().getSerializableExtra("New User");
 
         sexualOrientation = new ArrayList<>();
 
@@ -26,9 +28,9 @@ public class SexualOrientationActivity extends AppCompatActivity {
         final CheckBox female = findViewById(R.id.checkBoxFemale);
         final CheckBox genderX = findViewById(R.id.checkBoxGenderX);
 
-        Button orinetationContinue = findViewById(R.id.orientationContinue);
+        Button orientationContinue = findViewById(R.id.orientationContinue);
 
-        orinetationContinue.setOnClickListener(new View.OnClickListener() {
+        orientationContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -44,6 +46,8 @@ public class SexualOrientationActivity extends AppCompatActivity {
 
 
                 Intent i = new Intent(SexualOrientationActivity.this, ProfessionActivity.class);
+                u.setSexualOrientation(sexualOrientation);
+                i.putExtra("New User",u);
                 startActivity(i);
             }
         });

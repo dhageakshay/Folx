@@ -26,6 +26,7 @@
 		<activity android:name=".SexualOrientationActivity" />
 		<activity android:name=".GenderActivity" />
 		<activity android:name=".OTPActivity" />
+		<activity android:name=".MemeEntryActivity" />
 		<activity
 			android:name=".SignIn"
 			android:label="@string/title_activity_sign_in"

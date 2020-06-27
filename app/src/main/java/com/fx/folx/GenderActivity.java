@@ -8,10 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class GenderActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
+    private User u;
 
 
     @Override
@@ -21,27 +26,33 @@ public class GenderActivity extends AppCompatActivity {
         radioGroup =  findViewById(R.id.radioGroup);
         radioGroup.clearCheck();
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rb = group.findViewById(checkedId);
+        u  = (User) getIntent().getSerializableExtra("New User");
+        final String gender;
 
-            }
-        });
+
 
         Button genderContinue = findViewById(R.id.genderContinue);
         genderContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GenderActivity.this, SexualOrientationActivity.class));
+                int selectId = radioGroup.getCheckedRadioButtonId();
+
+                RadioButton rb = findViewById(selectId);
+
+                if(rb!=null){
+                    u.setGender(rb.getText().toString());
+                    Intent i = new Intent(GenderActivity.this, SexualOrientationActivity.class);
+                    i.putExtra("New User", u);
+                    startActivity(i);
+                }
+                else{
+                    Snackbar.make(v, "Please select your gender", Snackbar.LENGTH_LONG).show();
+                }
             }
         });
 
     }
 
-    public void onClear(View v) {
-        /* Clears all selected radio buttons to default */
-        radioGroup.clearCheck();
-    }
+
 
 }
