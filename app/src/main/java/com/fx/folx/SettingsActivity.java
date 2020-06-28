@@ -1,9 +1,11 @@
 package com.fx.folx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -14,12 +16,19 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import java.util.Date;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private final String TAG = "SETTINGSACTIVITY";
 
     private TextView distanceTextView, ageTextView;
     private SeekBar distanceSeekbar;
@@ -28,7 +37,13 @@ public class SettingsActivity extends AppCompatActivity {
     private RadioGroup lastSeen;
     private Button logout;
 
-    FirebaseAuth mAuth;
+    private Integer minAgeRange,maxAgeRange,maxDistance;
+    private Boolean viewLastSeen;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseDatabase database;
+    DatabaseReference ref;
 
     int distance=0;
 
@@ -45,8 +60,36 @@ public class SettingsActivity extends AppCompatActivity {
         logout = findViewById(R.id.logoutButton);
 
         mAuth = FirebaseAuth.getInstance();
+        user  = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("accounts");
+        ref.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                minAgeRange = snapshot.child("minAgeRange").getValue(Integer.class);
+                maxAgeRange = snapshot.child("maxAgeRange").getValue(Integer.class);
+                maxDistance = snapshot.child("maxDistance").getValue(Integer.class);
+                viewLastSeen = (Boolean) snapshot.child("viewLastSeen").getValue(Boolean.class);
+                Log.d(TAG,String.valueOf(viewLastSeen));
+                Log.d(TAG,String.valueOf(maxDistance));
 
-        final FirebaseUser user  = mAuth.getCurrentUser();
+                if(viewLastSeen){
+                    lastSeen.check(R.id.publicRadio);
+                }else{
+                    lastSeen.check(R.id.privateRadio);
+                }
+
+                ageseek.setSelectedMinValue(minAgeRange);
+                ageseek.setSelectedMaxValue(maxAgeRange);
+                distanceSeekbar.setProgress(maxDistance-20);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         distanceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -54,6 +97,7 @@ public class SettingsActivity extends AppCompatActivity {
                                           boolean fromUser) {
                 distanceTextView.setText((progress + 20) +" kms");
                 distance = progress+20;
+                ref.child(user.getUid()).child("maxDistance").setValue(distance);
             }
 
             @Override
@@ -67,8 +111,6 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        ageseek.setSelectedMaxValue(25);
-        ageseek.setSelectedMinValue(18);
 
         ageseek.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener() {
             @Override
@@ -77,6 +119,9 @@ public class SettingsActivity extends AppCompatActivity {
                maxAge = (int)bar.getSelectedMaxValue();
 
                ageTextView.setText(minAge+"-"+maxAge+" years");
+
+               ref.child(user.getUid()).child("minAgeRange").setValue(minAge);
+                ref.child(user.getUid()).child("maxAgeRange").setValue(maxAge);
             }
         });
 
@@ -85,6 +130,13 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb = group.findViewById(checkedId);
+                if(checkedId == R.id.privateRadio){
+                    ref.child(user.getUid()).child("viewLastSeen").setValue(false);
+                }
+                else{
+                    ref.child(user.getUid()).child("viewLastSeen").setValue(true);
+
+                }
 
             }
         });

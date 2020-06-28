@@ -33,7 +33,6 @@ public class MemeEntryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("accounts");
-//                myRef.setValueAsync()
                 FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
                 myRef.child(fUser.getUid()).setValue(user);

@@ -30,8 +30,10 @@ public class StoryEntryActivity extends AppCompatActivity {
                 String story = storyEntryEditText.getText().toString();
                 if(!TextUtils.isEmpty(story)){
                     u.setStory(story);
-                }
+                }else{
 
+                    u.setStory("");
+                }
 
                 Intent i = new Intent(StoryEntryActivity.this,PictureEntryActivity.class);
                 i.putExtra("New User",u);

@@ -78,6 +78,7 @@ public class SignInFragment extends Fragment {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
+                                        Log.d(TAG,user.getEmail());
                                         Intent i = new Intent(getActivity(), SwipeActivity.class);
                                         i.putExtra("Sign In",user);
                                         startActivity(i);
@@ -112,11 +113,4 @@ public class SignInFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-    }
 }

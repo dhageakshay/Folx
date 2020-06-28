@@ -1,27 +1,34 @@
 package com.fx.folx;
 
+import android.content.Intent;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User implements Serializable {
 
-    private String userName,nickName, email, password, gender,profession,company,university,story,phone;
+    private String name,nickName, email, password, gender,profession,company,university,story,phone;
     private Integer userAge;
     private Date dob;
     private ArrayList sexualOrientation;
+    private Integer maxDistance,minAgeRange,maxAgeRange;
+
+    // viewLastSeen gives the choice of the user when was he/she last active. true implies public;  false implies private
+    private Boolean viewLastSeen;
 
     public User(String name, Integer age){
-        userName = name;
+        this.name = name;
         userAge = age;
     }
 
     public User(String name, String email,String password, Date dob, String phone){
-        userName = name;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.dob = dob;
         this.phone = phone;
+        viewLastSeen = true;
     }
 
     public Integer getUserAge() {
@@ -29,7 +36,7 @@ public class User implements Serializable {
     }
 
     public String getUserName() {
-        return userName;
+        return name;
     }
 
     public Date getDob() {
@@ -76,6 +83,22 @@ public class User implements Serializable {
         return sexualOrientation;
     }
 
+    public Integer getMinAgeRange() {
+        return minAgeRange;
+    }
+
+    public Integer getMaxAgeRange() {
+        return maxAgeRange;
+    }
+
+    public Integer getMaxDistance() {
+        return maxDistance;
+    }
+
+    public Boolean getViewLastSeen() {
+        return viewLastSeen;
+    }
+
     public void setCompany(String company) {
         this.company = company;
     }
@@ -114,7 +137,7 @@ public class User implements Serializable {
 
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.name = userName;
     }
 
     public void setPhone(String phone) {
@@ -123,5 +146,21 @@ public class User implements Serializable {
 
     public void setSexualOrientation(ArrayList sexualOrientation) {
         this.sexualOrientation = sexualOrientation;
+    }
+
+    public void setMaxDistance(Integer maxDistance) {
+        this.maxDistance = maxDistance;
+    }
+
+    public void setMaxAgeRange(Integer maxAgeRange) {
+        this.maxAgeRange = maxAgeRange;
+    }
+
+    public void setMinAgeRange(Integer minAgeRange) {
+        this.minAgeRange = minAgeRange;
+    }
+
+    public void setViewLastSeen(Boolean viewLastSeen) {
+        this.viewLastSeen = viewLastSeen;
     }
 }

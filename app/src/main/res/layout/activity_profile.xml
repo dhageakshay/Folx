@@ -27,7 +27,8 @@
 				android:layout_marginTop="32dp"
 				android:layout_marginBottom="16dp"
 				android:padding="8dp"
-				app:srcCompat="@drawable/ic_person_black_24dp" />
+				app:srcCompat="@drawable/ic_person_black_24dp"
+				/>
 
 			<LinearLayout
 				android:layout_width="wrap_content"
@@ -46,7 +47,7 @@
 					android:textSize="24sp" />
 
 				<TextView
-					android:id="@+id/profileAge"
+					android:id="@+id/profileAgeText"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_horizontal"
@@ -64,7 +65,8 @@
 				android:layout_gravity="center_horizontal"
 				android:text="Quote"
 				android:textColor="@color/colorAccentLight"
-				android:textSize="24sp" />
+				android:textSize="24sp"
+				android:visibility="gone"/>
 
 			<TextView
 				android:id="@+id/textView4"
@@ -171,14 +173,25 @@
 					android:textSize="24sp"/>
 
 				<ImageButton
-					android:id="@+id/editProfile"
+					android:id="@+id/editProfession"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					app:srcCompat="@drawable/ic_create_white_18dp"
 					android:layout_marginTop="16dp"
 					android:layout_marginBottom="16dp"
 					android:layout_marginLeft="16dp"
-					android:background="@drawable/circle_accent"/>
+					android:background="@drawable/circle_accent" />
+
+				<ImageButton
+					android:id="@+id/saveProfession"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:srcCompat="@drawable/ic_done_white_18dp"
+					android:layout_marginTop="16dp"
+					android:layout_marginBottom="16dp"
+					android:layout_marginLeft="16dp"
+					android:background="@drawable/circle_accent"
+					android:visibility="gone"/>
 
 			</LinearLayout>
 
@@ -189,6 +202,15 @@
 				android:text="Profession"
 				android:layout_marginLeft="32dp"
 				android:textSize="20sp"/>
+
+			<EditText
+				android:id="@+id/profileProfessionEditText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="32dp"
+				android:hint="Enter Profession"
+				android:inputType="textCapSentences"
+				android:visibility="gone" />
 
 
 			<LinearLayout
@@ -216,6 +238,17 @@
 					android:layout_marginLeft="16dp"
 					android:background="@drawable/circle_accent"/>
 
+				<ImageButton
+					android:id="@+id/saveCompany"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:srcCompat="@drawable/ic_done_white_18dp"
+					android:layout_marginTop="16dp"
+					android:layout_marginBottom="16dp"
+					android:layout_marginLeft="16dp"
+					android:background="@drawable/circle_accent"
+					android:visibility="gone"/>
+
 			</LinearLayout>
 
 			<TextView
@@ -225,6 +258,14 @@
 				android:text="Company"
 				android:layout_marginLeft="32dp"
 				android:textSize="20sp"/>
+			<EditText
+				android:id="@+id/profileCompanyEditText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="32dp"
+				android:inputType="textCapSentences"
+				android:hint="Enter Company"
+				android:visibility="gone"/>
 
 			<LinearLayout
 				android:layout_width="wrap_content"
@@ -251,6 +292,17 @@
 					android:layout_marginLeft="16dp"
 					android:background="@drawable/circle_accent"/>
 
+				<ImageButton
+					android:id="@+id/saveUniversity"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:srcCompat="@drawable/ic_done_white_18dp"
+					android:layout_marginTop="16dp"
+					android:layout_marginBottom="16dp"
+					android:layout_marginLeft="16dp"
+					android:background="@drawable/circle_accent"
+					android:visibility="gone"/>
+
 			</LinearLayout>
 
 			<TextView
@@ -260,6 +312,15 @@
 				android:text="Profession"
 				android:layout_marginLeft="32dp"
 				android:textSize="20sp"/>
+
+			<EditText
+				android:id="@+id/profileUniversityEditText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="32dp"
+				android:inputType="textCapSentences"
+				android:hint="Enter University"
+				android:visibility="gone"/>
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -273,7 +334,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Show me"
+					android:text="Sexual Preferences"
 					android:layout_marginTop="16dp"
 					android:layout_marginLeft="16dp"
 					android:layout_marginBottom="16dp"

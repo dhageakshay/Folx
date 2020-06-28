@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ import java.util.regex.Pattern;
  * Sign up fragment
  */
 public class SignUpFragment extends Fragment {
+
+    private final String TAG="SIGNUPFRAGMENT";
 
     private EditText signUpName, signUpEmail, signUpPassword, signUpConfirm, signUpDOB, signUpPhone, signUpNickName;
     private Button continueButton;
@@ -70,7 +73,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                // TODO Auto-generated method stub
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -83,7 +86,6 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new DatePickerDialog(getActivity(), date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -179,6 +181,11 @@ public class SignUpFragment extends Fragment {
                     newUser = null;
                     try {
                         newUser = new User(name, email, password, new SimpleDateFormat("MM/dd/yyyy").parse(dob),phone);
+                        newUser.setUserName(name);
+                        Log.d(TAG,newUser.getUserName());
+                        newUser.setMaxAgeRange(25);
+                        newUser.setMinAgeRange(18);
+                        newUser.setMaxDistance(100);
                         if(nickName!=null){
                             newUser.setNickName(nickName);
                         }
@@ -208,28 +215,6 @@ public class SignUpFragment extends Fragment {
 
                 }
 
-//                mAuth.createUserWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    // Sign in success, update UI with the signed-in user's information
-//                                    Log.d(TAG, "createUserWithEmail:success");
-//                                    FirebaseUser user = mAuth.getCurrentUser();
-////                                    updateUI(user);
-//
-//                                    startActivity(new Intent(getActivity(), OTPActivity.class));
-//                                } else {
-//                                    // If sign in fails, display a message to the user.
-//                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
-//                                    Toast.makeText(getActivity(), "Authentication failed.",
-//                                            Toast.LENGTH_SHORT).show();
-//
-//                                }
-//                            }
-//                        });
-//
-//            }
             }
         });
         return root;
