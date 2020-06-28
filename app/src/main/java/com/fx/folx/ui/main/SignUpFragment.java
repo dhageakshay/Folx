@@ -18,6 +18,9 @@ import androidx.fragment.app.Fragment;
 import com.fx.folx.OTPActivity;
 import com.fx.folx.R;
 import com.fx.folx.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
@@ -40,6 +43,7 @@ public class SignUpFragment extends Fragment {
 
     Calendar myCalendar;
     private FirebaseAuth mAuth;
+    private User newUser;
 
     @Override
     public View onCreateView(
@@ -172,7 +176,7 @@ public class SignUpFragment extends Fragment {
 
 
                 if(isAllFilled) {
-                    User newUser = null;
+                    newUser = null;
                     try {
                         newUser = new User(name, email, password, new SimpleDateFormat("MM/dd/yyyy").parse(dob),phone);
                         if(nickName!=null){
@@ -182,9 +186,26 @@ public class SignUpFragment extends Fragment {
                         e.printStackTrace();
                         Toast.makeText(getActivity(), "Enter DOB in the right format", Toast.LENGTH_SHORT).show();
                     }
-                    Intent i = new Intent(getActivity(), OTPActivity.class);
-                    i.putExtra("New User",  newUser);
-                    startActivity(i);
+
+                    mAuth.createUserWithEmailAndPassword(email,password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(getActivity(),"Authentication Successful",Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(getActivity(), OTPActivity.class);
+                                        i.putExtra("New User",  newUser);
+                                        startActivity(i);
+                                    }
+                                    else{
+                                        Toast.makeText(getActivity(),"E-mail or password is wrong",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+
+
                 }
 
 //                mAuth.createUserWithEmailAndPassword(email, password)

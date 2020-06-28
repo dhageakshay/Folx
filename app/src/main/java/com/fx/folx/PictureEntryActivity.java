@@ -11,6 +11,7 @@ import android.widget.ImageView;
 public class PictureEntryActivity extends AppCompatActivity {
 
     private ImageView imageView;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +19,16 @@ public class PictureEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_picture_entry);
 
         Button imgContinue = findViewById(R.id.imgContinue);
+        user = (User) getIntent().getSerializableExtra("New User");
+
+
 
         imgContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PictureEntryActivity.this, MemeEntryActivity.class));
+                Intent i = new Intent(PictureEntryActivity.this, MemeEntryActivity.class);
+                i.putExtra("New User",user);
+                startActivity(i);
             }
         });
     }

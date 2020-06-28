@@ -2,12 +2,18 @@ package com.fx.folx;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
@@ -20,6 +26,9 @@ public class SettingsActivity extends AppCompatActivity {
     private RangeSeekBar ageseek;
     private int minAge, maxAge;
     private RadioGroup lastSeen;
+    private Button logout;
+
+    FirebaseAuth mAuth;
 
     int distance=0;
 
@@ -33,6 +42,11 @@ public class SettingsActivity extends AppCompatActivity {
         distanceSeekbar = findViewById(R.id.distanceSeekbar);
         ageseek = findViewById(R.id.ageRange);
         lastSeen = findViewById(R.id.lastSeen);
+        logout = findViewById(R.id.logoutButton);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        final FirebaseUser user  = mAuth.getCurrentUser();
 
         distanceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -75,6 +89,15 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),OnBoardingActivity.class));
+                finish();
+            }
+        });
 
     }
 }

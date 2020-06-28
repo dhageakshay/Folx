@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.fx.folx.ui.main.SignInFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class OnBoardingActivity extends AppCompatActivity {
+
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,11 @@ public class OnBoardingActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser()!=null){
+            startActivity(new Intent(getApplicationContext(),SwipeActivity.class));
+        }
+
     }
 }

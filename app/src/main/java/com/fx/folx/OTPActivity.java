@@ -22,6 +22,7 @@ import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -47,6 +48,8 @@ public class OTPActivity extends AppCompatActivity {
     private final String TAG = "OTPACTIVITY";
     private String receivedCredential;
 
+
+    private FirebaseUser fUser;
 
 
 
@@ -96,7 +99,7 @@ public class OTPActivity extends AppCompatActivity {
         otpContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(otp.getText().toString())) {
+//                if (TextUtils.isEmpty(otp.getText().toString())) {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp.getText().toString());
                     mAuth.signInWithCredential(credential)
                             .addOnCompleteListener(OTPActivity.this, new OnCompleteListener<AuthResult>() {
@@ -114,10 +117,10 @@ public class OTPActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
-                else{
-                    otp.setError("Invalid Code");
-                }
+//                }
+//                else{
+//                    otp.setError("Invalid Code");
+//                }
             }
         });
 
