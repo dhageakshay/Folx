@@ -194,6 +194,7 @@ public class SignUpFragment extends Fragment {
                         Toast.makeText(getActivity(), "Enter DOB in the right format", Toast.LENGTH_SHORT).show();
                     }
 
+
                     mAuth.createUserWithEmailAndPassword(email,password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override

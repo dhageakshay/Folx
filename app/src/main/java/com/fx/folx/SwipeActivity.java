@@ -58,11 +58,12 @@ public class SwipeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         user = mAuth.getCurrentUser();
         ref = database.getReference("accounts");
+        final String key = user.getUid();
         ref.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child("email").getValue(String.class);
-                String key = snapshot.child("email").getKey();
+//                String key = snapshot.child("email").getKey();
                 Log.d(TAG,"EMAIL"+name);
                 Log.d(TAG,"KEY"+key);
             }

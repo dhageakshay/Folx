@@ -99,28 +99,20 @@ public class OTPActivity extends AppCompatActivity {
         otpContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (TextUtils.isEmpty(otp.getText().toString())) {
+                if (!TextUtils.isEmpty(otp.getText().toString()) || otp.getText() != null) {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp.getText().toString());
-                    mAuth.signInWithCredential(credential)
-                            .addOnCompleteListener(OTPActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(OTPActivity.this, "Verification Success", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(OTPActivity.this,GenderActivity.class);
-                                        i.putExtra("New User", u);
-                                        startActivity(i);
-                                    } else {
-                                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                            Toast.makeText(OTPActivity.this, "Verification Failed, Invalid credentials", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }
-                            });
-//                }
-//                else{
-//                    otp.setError("Invalid Code");
-//                }
+                    /*
+                    linkWithCredentials is used to avoid multiple keys generated while signing up
+                     */
+                    mAuth.getCurrentUser().linkWithCredential(credential);
+                    Log.d(TAG, mAuth.getCurrentUser().getUid());
+                    Intent i = new Intent(OTPActivity.this, GenderActivity.class);
+                    i.putExtra("New User", u);
+                    startActivity(i);
+                }
+                else{
+                    otp.setError("Invalid Code");
+                }
             }
         });
 
