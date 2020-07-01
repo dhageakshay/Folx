@@ -16,7 +16,6 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".ImagePickerActivity"></activity>
 
 		<provider
 			android:name="androidx.core.content.FileProvider"
@@ -28,6 +27,7 @@
 				android:resource="@xml/provider_paths" />
 		</provider>
 
+		<activity android:name=".ImagePickerActivity"/>
 		<activity android:name=".ForgotPasswordActivity" />
 		<activity android:name=".MoreActivity" />
 		<activity android:name=".BioActivity" />
@@ -40,13 +40,7 @@
 			android:name=".SwipeActivity"
 			android:label="@string/title_activity_swipe"
 			android:theme="@style/AppTheme.NoActionBar" />
-		<activity android:name=".PictureEntryActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+		<activity android:name=".PictureEntryActivity"/>
 		<activity android:name=".StoryEntryActivity" />
 		<activity android:name=".ProfessionActivity" />
 		<activity android:name=".SexualOrientationActivity" />
@@ -60,7 +54,13 @@
 		<activity android:name=".OnBoardingActivity" />
 		<activity
 			android:name=".SplashScreenActivity"
-			android:theme="@style/SplashScreenTheme"></activity>
+			android:theme="@style/SplashScreenTheme">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 		<activity android:name=".MainActivity" />
 		<activity
 			android:name="com.yalantis.ucrop.UCropActivity"

@@ -1,6 +1,5 @@
 package com.fx.folx;
 
-import android.content.Intent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,11 +7,12 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-    private String name,nickName, email, password, gender,profession,company,university,story,phone;
+    private String name,nickName, email, gender,profession,company,university,story,phone;
     private Integer userAge;
     private Date dob;
     private ArrayList sexualOrientation;
     private Integer maxDistance,minAgeRange,maxAgeRange;
+    private ArrayList<String> imageList;
 
     // viewLastSeen gives the choice of the user when was he/she last active. true implies public;  false implies private
     private Boolean viewLastSeen;
@@ -22,10 +22,9 @@ public class User implements Serializable {
         userAge = age;
     }
 
-    public User(String name, String email,String password, Date dob, String phone){
+    public User(String name, String email, Date dob, String phone){
         this.name = name;
         this.email = email;
-        this.password = password;
         this.dob = dob;
         this.phone = phone;
         viewLastSeen = true;
@@ -51,9 +50,6 @@ public class User implements Serializable {
         return nickName;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public String getPhone() {
         return phone;
@@ -119,10 +115,6 @@ public class User implements Serializable {
         this.nickName = nickName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setProfession(String profession) {
         this.profession = profession;
     }
@@ -162,5 +154,13 @@ public class User implements Serializable {
 
     public void setViewLastSeen(Boolean viewLastSeen) {
         this.viewLastSeen = viewLastSeen;
+    }
+
+    public ArrayList<String> getImageList() {
+        return imageList;
+    }
+
+    public void setImageList(ArrayList<String> imageList) {
+        this.imageList = imageList;
     }
 }

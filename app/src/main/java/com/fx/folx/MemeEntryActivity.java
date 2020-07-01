@@ -26,7 +26,6 @@ public class MemeEntryActivity extends AppCompatActivity {
 
         Button imgContinue = findViewById(R.id.memeContinue);
 
-        user = (User) getIntent().getSerializableExtra("New User");
 
         imgContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,10 +36,9 @@ public class MemeEntryActivity extends AppCompatActivity {
 
                 myRef.child(fUser.getUid()).setValue(user);
 
-                Log.d("MEMEENTRY",fUser.getUid());
-                Intent i = new Intent(MemeEntryActivity.this, SwipeActivity.class);
-                i.putExtra("New User",user);
-                startActivity(i);
+//                Log.d("MEMEENTRY",fUser.getUid());
+//                Intent i = new Intent(MemeEntryActivity.this, SwipeActivity.class);
+//                startActivity(i);
             }
         });
     }

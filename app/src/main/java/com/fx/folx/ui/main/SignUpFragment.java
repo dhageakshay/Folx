@@ -180,7 +180,7 @@ public class SignUpFragment extends Fragment {
                 if(isAllFilled) {
                     newUser = null;
                     try {
-                        newUser = new User(name, email, password, new SimpleDateFormat("MM/dd/yyyy").parse(dob),phone);
+                        newUser = new User(name, email, new SimpleDateFormat("MM/dd/yyyy").parse(dob),phone);
                         newUser.setUserName(name);
                         Log.d(TAG,newUser.getUserName());
                         newUser.setMaxAgeRange(25);

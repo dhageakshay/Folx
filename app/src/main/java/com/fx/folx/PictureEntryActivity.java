@@ -3,6 +3,7 @@ package com.fx.folx;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,13 +20,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fx.folx.ui.glide.GlideApp;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,7 +37,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,9 +52,12 @@ public class PictureEntryActivity extends AppCompatActivity {
     private ImageView imageView1,imageView3,imageView4,imageView5,imageView6,imageView7;
     private User user;
 
-    private Integer[] imageList = {new Integer(R.id.imageView1),new Integer(R.id.imageView3), new Integer(R.id.imageView4), new Integer(R.id.imageView5), new Integer(R.id.imageView6), new Integer(R.id.imageView)};
-    private HashMap<Integer,Uri> imageUrl;
+    private Integer[] imageList = {R.id.imageView1, R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6, R.id.imageView};
+    private ArrayList<String> imageUrl;
 
+
+    private SharedPreferences settings;
+    private SharedPreferences.Editor editor;
 
     //a Uri object to store file path
     //TODO: upload 404 error image and initialize the url here
@@ -80,7 +85,12 @@ public class PictureEntryActivity extends AppCompatActivity {
         // Firebase Stoorage Reference
         storageRef = FirebaseStorage.getInstance().getReference();
 
-        imageUrl = new HashMap<>();
+
+        settings = getSharedPreferences("IMAGE_NAME",MODE_PRIVATE);
+        editor = settings.edit();
+        editor.clear();
+
+        imageUrl = new ArrayList<>();
 
         imageView1.setOnClickListener(v -> Dexter.withActivity(PictureEntryActivity.this)
                 .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -88,7 +98,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[0]);
+                            editor.putInt(IMAGEID,imageList[0]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -108,7 +120,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[1]);
+                            editor.putInt(IMAGEID,imageList[1]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -128,7 +142,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[2]);
+                            editor.putInt(IMAGEID,imageList[2]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -148,7 +164,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[3]);
+                            editor.putInt(IMAGEID,imageList[3]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -168,7 +186,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[4]);
+                            editor.putInt(IMAGEID,imageList[4]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -188,7 +208,9 @@ public class PictureEntryActivity extends AppCompatActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions(imageList[5]);
+                            editor.putInt(IMAGEID,imageList[5]);
+                            editor.commit();
+                            showImagePickerOptions();
                         }
 
                         if (report.isAnyPermissionPermanentlyDenied()) {
@@ -206,28 +228,35 @@ public class PictureEntryActivity extends AppCompatActivity {
 
 
         imgContinue.setOnClickListener(v -> {
-            Intent i = new Intent(PictureEntryActivity.this, MemeEntryActivity.class);
-            i.putExtra("New User",user);
+
+            user.setImageList(imageUrl);
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("accounts");
+            FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+            Log.d(TAG,fUser.getUid());
+            myRef.child(fUser.getUid()).setValue(user);
+            Intent i = new Intent(PictureEntryActivity.this, SwipeActivity.class);
             startActivity(i);
         });
     }
 
 
-    private void showImagePickerOptions(Integer imageId) {
+    private void showImagePickerOptions() {
         ImagePickerActivity.showImagePickerOptions(this, new ImagePickerActivity.PickerOptionListener() {
             @Override
             public void onTakeCameraSelected() {
-                launchCameraIntent(imageId);
+                launchCameraIntent();
             }
 
             @Override
             public void onChooseGallerySelected() {
-                launchGalleryIntent(imageId);
+                launchGalleryIntent();
             }
         });
     }
 
-    private void launchCameraIntent(Integer imageId) {
+    private void launchCameraIntent() {
         Intent intent = new Intent(PictureEntryActivity.this, ImagePickerActivity.class);
         intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_IMAGE_CAPTURE);
 
@@ -236,20 +265,12 @@ public class PictureEntryActivity extends AppCompatActivity {
         intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_WIDTH, 1000);
         intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_HEIGHT, 1000);
 
-        // Add image id to the intent so that it can be used to display image on the respective view
-        Log.d(TAG, "cam id "+imageId);
-        intent.putExtra(IMAGEID,imageId);
-
         startActivityForResult(intent, REQUEST_IMAGE);
     }
 
-    private void launchGalleryIntent(Integer imageId) {
+    private void launchGalleryIntent() {
         Intent intent = new Intent(PictureEntryActivity.this, ImagePickerActivity.class);
         intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_GALLERY_IMAGE);
-
-        // Add image id to the intent so that it can be used to display image on the respective view
-        Log.d(TAG, "gallery id "+imageId);
-        intent.putExtra(IMAGEID,imageId);
 
         startActivityForResult(intent, REQUEST_IMAGE);
     }
@@ -269,8 +290,7 @@ public class PictureEntryActivity extends AppCompatActivity {
 
                     // loading profile image from local cache
                     if (uri != null) {
-                        Log.d(TAG, "activity result id "+data.getIntExtra(IMAGEID,R.id.imageView1));
-                        loadProfile(uri,data.getIntExtra(IMAGEID,R.id.imageView1));
+                        loadProfile(uri);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -279,18 +299,19 @@ public class PictureEntryActivity extends AppCompatActivity {
         }
     }
 
-    private void loadProfile(Uri url, Integer id) {
+    private void loadProfile(Uri url) {
+        Integer idx = getSharedPreferences("IMAGE_NAME",MODE_PRIVATE).getInt(IMAGEID,R.id.imageView1);
         Log.d(TAG, "Image cache path: " + url.toString());
-        ImageView view = findViewById(id);
+        Log.d(TAG, "Image view id: " + idx);
+        ImageView view = findViewById(idx);
 
         view.setAlpha((float) 1.0);
         GlideApp.with(this).load(url.toString())
                 .into(view);
-        Uri resultUri = uploadImage(url);
-        imageUrl.put(id,resultUri);
+       uploadImage(url);
     }
 
-    private Uri uploadImage(Uri uri){
+    private void uploadImage(Uri uri){
         // Images are stored in a unique folder for every unique user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         StorageReference imgRef = storageRef.child("images/"+user.getUid()+"/"+uri.getLastPathSegment());
@@ -323,6 +344,8 @@ public class PictureEntryActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     downloadUri = task.getResult();
+                    Log.d(TAG, "PicUrl "+downloadUri);
+                    imageUrl.add(downloadUri.toString());
 
                 } else {
                     // Handle failures
@@ -331,7 +354,6 @@ public class PictureEntryActivity extends AppCompatActivity {
             }
         });
 
-        return downloadUri;
     }
 
     /**
