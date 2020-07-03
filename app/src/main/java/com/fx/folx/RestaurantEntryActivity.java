@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fx.folx.api.APIClient;
@@ -40,9 +42,13 @@ public class RestaurantEntryActivity extends AppCompatActivity {
     //TODO: Change the apikey to company registered key
     String apiKey = "f5563e2d416bf5ff9a25dc6b249185b4";
 
-    private RecyclerView restaurantRecyclerView;
+    private RecyclerView restaurantRecyclerView,favRestaurantRecyclerView;
+    private TextView noFavText;
+    private ImageView badImage;
     private List<Restaurant> restaurantList;
     private RestaurantAdapter adapter;
+
+    protected ArrayList<Restaurant> favList;
 
 
     @Override
@@ -53,7 +59,20 @@ public class RestaurantEntryActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         restaurantRecyclerView.setLayoutManager(llm);
+        favRestaurantRecyclerView = findViewById(R.id.favRestaurantRecyclerView);
+        LinearLayoutManager llm1 = new LinearLayoutManager(this);
+        llm1.setOrientation(LinearLayoutManager.VERTICAL);
+        favRestaurantRecyclerView.setLayoutManager(llm1);
         restaurantList = new ArrayList<>();
+        favList = new ArrayList<>();
+
+        noFavText = findViewById(R.id.noFavText);
+        badImage = findViewById(R.id.badImage);
+
+
+        //TODO: Fix redundancy of restaurants in favorites
+        FavRestaurantAdapter favRestaurantAdapter = new FavRestaurantAdapter(this,favList,noFavText,badImage);
+        favRestaurantRecyclerView.setAdapter(favRestaurantAdapter);
 
         //Fetch the data by calling the API
         APIInterface apiInterface = APIClient.getClient();
@@ -71,7 +90,8 @@ public class RestaurantEntryActivity extends AppCompatActivity {
                     restaurantList.add(r.getRestaurant());
                 }
 
-               adapter = new RestaurantAdapter(getApplicationContext(),restaurantList);
+                adapter = new RestaurantAdapter(getApplicationContext(),restaurantList,favList,favRestaurantRecyclerView,
+                                                favRestaurantAdapter,noFavText, badImage);
                 restaurantRecyclerView.setAdapter(adapter);
             }
 
