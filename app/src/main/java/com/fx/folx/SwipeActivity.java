@@ -55,8 +55,8 @@ public class SwipeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
         user = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
         ref = database.getReference("accounts");
         final String key = user.getUid();
         ref.child(user.getUid()).addValueEventListener(new ValueEventListener() {

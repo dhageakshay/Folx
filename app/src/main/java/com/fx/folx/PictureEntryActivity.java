@@ -23,6 +23,7 @@ import com.fx.folx.ui.glide.GlideApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -228,16 +229,20 @@ public class PictureEntryActivity extends AppCompatActivity {
 
 
         imgContinue.setOnClickListener(v -> {
-
-            user.setImageList(imageUrl);
-
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("accounts");
-            FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
-            Log.d(TAG,fUser.getUid());
-            myRef.child(fUser.getUid()).setValue(user);
-            Intent i = new Intent(PictureEntryActivity.this, SwipeActivity.class);
-            startActivity(i);
+            if(imageUrl.isEmpty()){
+                Snackbar.make(v,"Please add an image",Snackbar.LENGTH_SHORT).show();
+            }
+            else {
+                user.setImageList(imageUrl);
+                //TODO: Add a spinner until the photo is uploaded to the storage and its link is updated to the User object and the object is updated to database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("accounts");
+                FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+                Log.d(TAG, fUser.getUid());
+                myRef.child(fUser.getUid()).setValue(user);
+                Intent i = new Intent(PictureEntryActivity.this, SwipeActivity.class);
+                startActivity(i);
+            }
         });
     }
 

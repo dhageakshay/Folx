@@ -2,7 +2,9 @@ package com.fx.folx.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Restaurant {
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -21,6 +23,8 @@ public class Restaurant {
         this.location = location;
         this.thumb = thumb;
     }
+
+    public Restaurant(){}
 
     public String getId() {
         return id;

@@ -171,6 +171,9 @@ public class ProfileActivity extends AppCompatActivity {
                     GlideApp.with(ProfileActivity.this).load(imageList.get(counter).toString())
                             .into(imageSetterList.get(counter));
                 }
+                GlideApp.with(ProfileActivity.this).load(imageList.get(0))
+                        .circleCrop().into(imageDp);
+                imageDp.setBackground(null);
 
                 Log.d(TAG,"dob"+dob);
                 Log.d(TAG,"name "+name);

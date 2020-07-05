@@ -40,7 +40,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public void onBindViewHolder(@NonNull final ChatViewHolder holder, int position) {
 
-        holder.senderName.setText(list.get(position).getUserName());
+        holder.senderName.setText(list.get(position).getName());
         //holder.imageView.setImageResource();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -118,7 +118,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mContext.getApplicationContext());
             timeText.setText(dateFormat.format(date));
 
-            nameText.setText(message.getSender().getUserName());
+            nameText.setText(message.getSender().getName());
 
             // Insert the profile image from the URL into the ImageView.
            // Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);

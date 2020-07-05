@@ -50,7 +50,7 @@ public class ProfessionActivity extends AppCompatActivity {
                     isAllfilled = false;
                 }
                 if(isAllfilled){
-                    Intent i = new Intent(ProfessionActivity.this,StoryEntryActivity.class);
+                    Intent i = new Intent(ProfessionActivity.this,RestaurantEntryActivity.class);
                     u.setCompany(company);
                     u.setProfession(profession);
                     u.setUniversity(university);

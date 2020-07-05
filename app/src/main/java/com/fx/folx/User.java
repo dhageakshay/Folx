@@ -1,26 +1,29 @@
 package com.fx.folx;
 
 
+import com.fx.folx.api.Restaurant;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User implements Serializable {
 
     private String name,nickName, email, gender,profession,company,university,story,phone;
-    private Integer userAge;
     private Date dob;
     private ArrayList sexualOrientation;
     private Integer maxDistance,minAgeRange,maxAgeRange;
     private ArrayList<String> imageList;
+    private ArrayList<Restaurant> favRestaurantList;
 
     // viewLastSeen gives the choice of the user when was he/she last active. true implies public;  false implies private
     private Boolean viewLastSeen;
 
     public User(String name, Integer age){
         this.name = name;
-        userAge = age;
     }
+    public User(){}
 
     public User(String name, String email, Date dob, String phone){
         this.name = name;
@@ -30,11 +33,62 @@ public class User implements Serializable {
         viewLastSeen = true;
     }
 
-    public Integer getUserAge() {
-        return userAge;
+    public User(String name, String nickName, String email, String gender, String profession, String company, String university, String phone,
+                Date dob, ArrayList sexualOrientation, Integer maxDistance, Integer minAgeRange, Integer maxAgeRange, ArrayList<String> imageList,
+                ArrayList<Restaurant> favRestaurantList, Boolean viewLastSeen) {
+
+        this.name = name;
+        this.nickName = nickName;
+        this.email = email;
+        this.gender = gender;
+        this.profession = profession;
+        this.company = company;
+        this.university = university;
+        this.phone = phone;
+        this.dob = dob;
+        this.sexualOrientation = sexualOrientation;
+        this.maxDistance = maxDistance;
+        this.minAgeRange = minAgeRange;
+        this.maxAgeRange = maxAgeRange;
+        this.imageList = imageList;
+        this.favRestaurantList = favRestaurantList;
+        this.viewLastSeen = viewLastSeen;
     }
 
-    public String getUserName() {
+    public User(String name, String nickName, String email, String gender, String profession, String company, String university, String story,
+                String phone, Date dob, ArrayList sexualOrientation, Integer maxDistance, Integer minAgeRange, Integer maxAgeRange,
+                ArrayList<String> imageList, ArrayList<Restaurant> favRestaurantList, Boolean viewLastSeen) {
+
+        this.name = name;
+        this.nickName = nickName;
+        this.email = email;
+        this.gender = gender;
+        this.profession = profession;
+        this.company = company;
+        this.university = university;
+        this.story = story;
+        this.phone = phone;
+        this.dob = dob;
+        this.sexualOrientation = sexualOrientation;
+        this.maxDistance = maxDistance;
+        this.minAgeRange = minAgeRange;
+        this.maxAgeRange = maxAgeRange;
+        this.imageList = imageList;
+        this.favRestaurantList = favRestaurantList;
+        this.viewLastSeen = viewLastSeen;
+    }
+
+    public ArrayList<Restaurant> getFavRestaurantList() {
+        return favRestaurantList;
+    }
+
+    public void setFavRestaurantList(ArrayList<Restaurant> favRestaurantList) {
+        this.favRestaurantList = favRestaurantList;
+    }
+
+
+
+    public String getName() {
         return name;
     }
 
@@ -128,7 +182,7 @@ public class User implements Serializable {
     }
 
 
-    public void setUserName(String userName) {
+    public void setName(String userName) {
         this.name = userName;
     }
 
@@ -162,5 +216,20 @@ public class User implements Serializable {
 
     public void setImageList(ArrayList<String> imageList) {
         this.imageList = imageList;
+    }
+
+    public int calcUserAge(){
+        return calculateAge(dob.getTime());
+    }
+
+    private int calculateAge(long date){
+        Calendar dob = Calendar.getInstance();
+        dob.setTimeInMillis(date);
+        Calendar today = Calendar.getInstance();
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)){
+            age--;
+        }
+        return age;
     }
 }

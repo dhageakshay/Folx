@@ -181,8 +181,8 @@ public class SignUpFragment extends Fragment {
                     newUser = null;
                     try {
                         newUser = new User(name, email, new SimpleDateFormat("MM/dd/yyyy").parse(dob),phone);
-                        newUser.setUserName(name);
-                        Log.d(TAG,newUser.getUserName());
+                        newUser.setName(name);
+                        Log.d(TAG,newUser.getName());
                         newUser.setMaxAgeRange(25);
                         newUser.setMinAgeRange(18);
                         newUser.setMaxDistance(100);

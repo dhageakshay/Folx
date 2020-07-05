@@ -16,14 +16,6 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".RestaurantEntryActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-
 		<provider
 			android:name="androidx.core.content.FileProvider"
 			android:authorities="${applicationId}.provider"
@@ -34,6 +26,7 @@
 				android:resource="@xml/provider_paths" />
 		</provider>
 
+		<activity android:name=".RestaurantEntryActivity"/>
 		<activity android:name=".ImagePickerActivity" />
 		<activity android:name=".ForgotPasswordActivity" />
 		<activity android:name=".MoreActivity" />
@@ -56,13 +49,16 @@
 		<activity android:name=".MemeEntryActivity" />
 		<activity
 			android:name=".SignIn"
-			android:label="@string/title_activity_sign_in"
-			android:theme="@style/AppTheme.NoActionBar" />
+			android:label="@string/title_activity_sign_in" />
 		<activity android:name=".OnBoardingActivity" />
 		<activity
 			android:name=".SplashScreenActivity"
 			android:theme="@style/SplashScreenTheme">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
 
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
 		</activity>
 		<activity android:name=".MainActivity" />
 		<activity

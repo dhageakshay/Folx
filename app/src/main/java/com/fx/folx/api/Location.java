@@ -2,7 +2,9 @@ package com.fx.folx.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
 
     @SerializedName("address")
     private String address;
@@ -35,6 +37,7 @@ public class Location {
         this.locality_verbose = locality_verbose;
     }
 
+    public Location(){}
     public String getAddress() {
         return address;
     }
